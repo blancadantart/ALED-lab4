@@ -131,9 +131,9 @@ public class Patient extends Thread {
 	 */
 	private void advanceProtocol() {
 		// SOLUCION
-		EmergencyRoomGUI.getInstance().animateTransfer(this,protocol.get(indexProtocol));
-		location = protocol.get(indexProtocol).getTo();
-		position = location.getPosition();
+		Transfer transfer= protocol.get(indexProtocol);
+		EmergencyRoomGUI.getInstance().animateTransfer(this,transfer);
+		location = transfer.getTo();
 		indexProtocol++;
 		// SOLUCION
 		
@@ -149,7 +149,8 @@ public class Patient extends Thread {
 		try {
 			sleep(location.getTime());	
 		}catch (InterruptedException e) {
-			return;
+			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
 		//SOLUCION
 	}

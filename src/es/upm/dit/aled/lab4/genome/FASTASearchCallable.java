@@ -58,7 +58,7 @@ public class FASTASearchCallable implements Callable<List<Integer>> {
 		}
 		List <Integer> lista = new ArrayList <Integer>();
 		
-		for(int i=0;i<pattern.length;i++) 
+		for(int i=lo;i<hi;i++) 
 				if(compare(pattern,i))
 					lista.add(i);
 		
